@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noélia Domínguez — Archivo de Trabajo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080e17;
+    --bg2: #0d1520;
+    --dark: #040810;
+    --gold: #c9a96e;
+    --gold-light: #e8c98a;
+    --gold-bright: #f5c842;
+    --text: #e8e0d4;
+    --text-dim: rgba(232,224,212,0.55);
+    --line: rgba(201,169,110,0.2);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(–bg); color: var(–text); font-family: ‘Barlow’, sans-serif; overflow-x: hidden; }
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center;
+background: rgba(4,8,16,0.95); border-bottom: 1px solid var(–line);
+backdrop-filter: blur(10px);
+}
+.nav-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.3rem; letter-spacing: 0.2em; color: var(–gold-bright); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(–text-dim); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(–gold-bright); }
+
+/* HERO */
+.hero {
+min-height: 60vh; display: flex; align-items: flex-end;
+padding: 8rem 3rem 4rem; position: relative; overflow: hidden;
+border-bottom: 1px solid var(–line);
+}
+.hero-bg {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(245,200,66,0.04) 0%, transparent 60%),
+radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,169,110,0.05) 0%, transparent 50%);
+}
+.hero-circle { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 50vw; height: 50vw; border-radius: 50%; border: 1px solid rgba(201,169,110,0.06); }
+.hero-circle-2 { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); width: 30vw; height: 30vw; border-radius: 50%; border: 1px solid rgba(245,200,66,0.06); background: radial-gradient(ellipse at center, rgba(245,200,66,0.03) 0%, transparent 70%); }
+
+.hero-content { position: relative; z-index: 2; }
+.hero-tag { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(–gold-bright); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+.hero-tag::before { content: ‘’; width: 30px; height: 2px; background: var(–gold-bright); }
+.hero-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(4rem, 10vw, 9rem); line-height: 0.85; letter-spacing: -0.01em; margin-bottom: 1rem; }
+.hero-title .dim { color: rgba(232,224,212,0.2); }
+.hero-subtitle { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(–text-dim); margin-bottom: 2rem; }
+.hero-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.badge { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(–line); color: var(–text-dim); }
+.badge.gold { border-color: var(–gold-bright); color: var(–gold-bright); background: rgba(245,200,66,0.05); }
+
+/* SECTIONS */
+section { padding: 5rem 3rem; border-bottom: 1px solid var(–line); }
+
+.section-header { margin-bottom: 3rem; }
+.section-tag { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(–gold-bright); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
+.section-tag::before { content: ‘’; width: 30px; height: 2px; background: var(–gold-bright); }
+.section-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 0.9; letter-spacing: 0.02em; }
+.section-title .highlight { color: var(–gold-bright); }
+
+/* VIDEO GRID */
+.video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.video-card { border: 1px solid var(–line); overflow: hidden; transition: border-color 0.3s; background: var(–bg2); }
+.video-card:hover { border-color: rgba(245,200,66,0.4); }
+.video-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1.5fr 1fr; }
+
+.video-player { position: relative; background: var(–dark); }
+.video-player video { width: 100%; display: block; max-height: 280px; object-fit: cover; }
+.video-card.featured .video-player video { max-height: 360px; }
+
+.video-info { padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+.video-card.featured .video-info { padding: 2rem; }
+
+.video-category { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(–gold-bright); margin-bottom: 0.5rem; }
+.video-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; line-height: 1.1; margin-bottom: 0.8rem; color: var(–text); }
+.video-card.featured .video-title { font-size: 2rem; }
+.video-desc { font-size: 0.82rem; line-height: 1.7; color: var(–text-dim); margin-bottom: 1rem; flex: 1; }
+
+.video-roles { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.video-role { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(–dark); background: var(–gold); padding: 0.25rem 0.6rem; }
+
+/* NOTAS GRID */
+.notas-intro { font-size: 0.95rem; line-height: 1.8; color: var(–text-dim); max-width: 700px; margin-bottom: 3rem; }
+.notas-intro strong { color: var(–text); }
+
+.notas-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(–line); border: 1px solid var(–line); margin-bottom: 2rem; }
+.notas-cat { background: var(–bg2); padding: 2rem; }
+.notas-cat-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(–gold-bright); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+.notas-cat-title span { font-size: 1rem; }
+.notas-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.nota-item { font-size: 0.8rem; line-height: 1.5; color: var(–text-dim); padding-left: 1rem; border-left: 2px solid var(–line); transition: border-color 0.3s; }
+.nota-item:hover { border-left-color: var(–gold-bright); color: var(–text); }
+.nota-date { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(232,224,212,0.3); display: block; margin-top: 0.2rem; }
+
+.notas-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(–gold-bright); text-decoration: none; border: 1px solid rgba(245,200,66,0.3); padding: 0.8rem 1.5rem; transition: all 0.3s; }
+.notas-link:hover { background: rgba(245,200,66,0.05); border-color: var(–gold-bright); }
+
+/* PROYECTOS */
+.proyectos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(–line); border: 1px solid var(–line); }
+.proyecto-card { background: var(–bg); padding: 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+.proyecto-card:hover { background: var(–bg2); }
+.proyecto-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(–gold-bright); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.proyecto-card:hover::before { transform: scaleX(1); }
+.proyecto-cat { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(–gold-bright); margin-bottom: 0.8rem; }
+.proyecto-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; margin-bottom: 0.8rem; line-height: 1; }
+.proyecto-desc { font-size: 0.82rem; line-height: 1.7; color: var(–text-dim); margin-bottom: 1rem; }
+.proyecto-badge { display: inline-block; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(–dark); background: var(–gold-bright); padding: 0.25rem 0.7rem; }
+
+/* CONTACT BAR */
+.contact-bar { background: var(–gold-bright); padding: 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+.contact-bar-left { }
+.contact-bar-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 3rem; color: var(–dark); line-height: 0.9; letter-spacing: 0.02em; }
+.contact-bar-sub { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(4,8,16,0.6); margin-top: 0.3rem; }
+.contact-bar-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.contact-bar-link { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(–dark); background: transparent; padding: 0.8rem 1.5rem; border: 2px solid var(–dark); text-decoration: none; transition: all 0.3s; }
+.contact-bar-link:hover { background: var(–dark); color: var(–gold-bright); }
+.contact-bar-link.filled { background: var(–dark); color: var(–gold-bright); }
+.contact-bar-link.filled:hover { background: rgba(4,8,16,0.8); }
+
+/* FOOTER */
+footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 1rem; letter-spacing: 0.3em; color: var(–text-dim); }
+.footer-copy { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(–text-dim); opacity: 0.4; }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links { display: none; }
+section { padding: 4rem 1.5rem; }
+.hero { padding: 7rem 1.5rem 3rem; }
+.video-grid { grid-template-columns: 1fr; }
+.video-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+.notas-categories { grid-template-columns: 1fr; }
+.proyectos-grid { grid-template-columns: 1fr; }
+.contact-bar { flex-direction: column; align-items: flex-start; }
+footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Noélia</div>
+  <ul class="nav-links">
+    <li><a href="#audiovisual">Audiovisual</a></li>
+    <li><a href="#prensa">Prensa</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Archivo de trabajo · 2006–2025</div>
+    <h1 class="hero-title">NOÉLIA<br><span class="dim">DOMÍNGUEZ</span></h1>
+    <div class="hero-subtitle">Comunicadora · Socióloga · Productora Audiovisual</div>
+    <div class="hero-badges">
+      <div class="badge gold">Producción · Postproducción · Guion</div>
+      <div class="badge">+15 años en medios</div>
+      <div class="badge">Canal 13 San Luis</div>
+      <div class="badge">🏆 Premio Gerardo Vallejo</div>
+      <div class="badge">ANSL · +30 notas publicadas</div>
+    </div>
+  </div>
+</div>
+
+<!-- AUDIOVISUAL -->
+
+<section id="audiovisual">
+  <div class="section-header reveal">
+    <div class="section-tag">Trabajos audiovisuales</div>
+    <h2 class="section-title">PRODUCCIÓN <span class="highlight">EN PANTALLA</span></h2>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.8rem;">Producción · Postproducción · Guion en cada pieza</p>
+  </div>
+
+  <div class="video-grid">
+
+```
+<!-- FEATURED: Poesía Trémula -->
+<div class="video-card featured reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/PresentaciA_³n_del_libro_PoesA__a_TrA__mula__en_el_Hito_del_Bicentenario_.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Cultura · Literatura · 2021</div>
+      <div class="video-title">PRESENTACIÓN POESÍA TRÉMULA</div>
+      <p class="video-desc">Cobertura audiovisual de la presentación del poemario "Poesía Trémula" en el Hito del Bicentenario, San Luis. Producción completa: guion, registro y postproducción.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+      <span class="video-role">Autora</span>
+    </div>
+  </div>
+</div>
+
+<!-- Homenaje Fellini -->
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/Homenaje_a_Federico_Fellini.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Cultura · Cine · ANSL</div>
+      <div class="video-title">HOMENAJE A FEDERICO FELLINI</div>
+      <p class="video-desc">Producción audiovisual para la Agencia de Noticias San Luis. Homenaje al director de cine italiano.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+
+<!-- Informe Corto -->
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/INFORME_CORTO.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Periodismo · Canal 13</div>
+      <div class="video-title">INFORME: CORTOMETRAJE ESTUDIANTIL</div>
+      <p class="video-desc">Nota periodística sobre alumnos secundarios ganadores de un premio con su cortometraje. Producción, postproducción y guion.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+
+<!-- Audiolibro -->
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/AUDIOLIBRO.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Periodismo · Educación · Canal 13</div>
+      <div class="video-title">INFORME: AUDIOLIBRO</div>
+      <p class="video-desc">Nota sobre proyecto de audiolibro realizado por alumnos. Cobertura periodística con producción y postproducción integral.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+
+<!-- Educadoras -->
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/Educadoras.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Micros · Día de la Maestra · Canal 13</div>
+      <div class="video-title">EDUCADORAS — MICRO 1</div>
+      <p class="video-desc">Serie de micros audiovisuales producidos para el Día de la Maestra. Producción, postproducción y guion completos.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/Educadoras_.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Micros · Día de la Maestra · Canal 13</div>
+      <div class="video-title">EDUCADORAS — MICRO 2</div>
+      <p class="video-desc">Serie de micros audiovisuales producidos para el Día de la Maestra. Producción, postproducción y guion completos.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+
+<div class="video-card reveal">
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/mnt/user-data/uploads/Educadoras_2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-info">
+    <div>
+      <div class="video-category">Micros · Día de la Maestra · Canal 13</div>
+      <div class="video-title">EDUCADORAS — MICRO 3</div>
+      <p class="video-desc">Serie de micros audiovisuales producidos para el Día de la Maestra. Producción, postproducción y guion completos.</p>
+    </div>
+    <div class="video-roles">
+      <span class="video-role">Producción</span>
+      <span class="video-role">Postproducción</span>
+      <span class="video-role">Guion</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- PRENSA -->
+
+<section id="prensa" style="background: var(--bg2);">
+  <div class="section-header reveal">
+    <div class="section-tag">Archivo periodístico</div>
+    <h2 class="section-title">NOTAS <span class="highlight">PUBLICADAS</span></h2>
+  </div>
+  <p class="notas-intro reveal">Más de <strong>30 notas publicadas</strong> en la Agencia de Noticias San Luis (ANSL), medio oficial de la Provincia de San Luis, entre 2010 y 2025. Cobertura de cultura, música, política, educación y sociedad.</p>
+
+  <div class="notas-categories reveal">
+    <div class="notas-cat">
+      <div class="notas-cat-title"><span>🎬</span>Cultura y Arte</div>
+      <div class="notas-list">
+        <div class="nota-item">Noelia Domínguez presentará "Poesía Trémula" en el Hito del Bicentenario<span class="nota-date">04/03/2021 · ANSL</span></div>
+        <div class="nota-item">Se presentó "Poesía Trémula" en el Hito del Bicentenario<span class="nota-date">08/03/2021 · ANSL</span></div>
+        <div class="nota-item">"Feco, el corajudo", un documental prometedor para la 2ª convocatoria Gerardo Vallejo<span class="nota-date">02/01/2023 · ANSL</span></div>
+        <div class="nota-item">Historia, patrimonio e identidad en la 2ª edición de documentales "Gerardo Vallejo"<span class="nota-date">24/09/2023 · ANSL</span></div>
+        <div class="nota-item">"Boom S.H.", producción audiovisual<span class="nota-date">17/04/2015 · ANSL</span></div>
+      </div>
+    </div>
+    <div class="notas-cat">
+      <div class="notas-cat-title"><span>🎵</span>Música y Espectáculos</div>
+      <div class="notas-list">
+        <div class="nota-item">Molotov explotará en San Luis Rock<span class="nota-date">21/11/2014 · ANSL</span></div>
+        <div class="nota-item">Las Manos de Filippi desembarcan en San Luis<span class="nota-date">24/05/2014 · ANSL</span></div>
+        <div class="nota-item">Illya Kuryaki, la magia sigue intacta<span class="nota-date">11/10/2014 · ANSL</span></div>
+        <div class="nota-item">Kamikazes y Nafta de Avión tocarán en el Mauricio López<span class="nota-date">31/10/2014 · ANSL</span></div>
+        <div class="nota-item">Música de mi Tierra ganó un Lanín de Oro<span class="nota-date">31/10/2014 · ANSL</span></div>
+        <div class="nota-item">Fiesta reggae en San Luis<span class="nota-date">09/07/2014 · ANSL</span></div>
+        <div class="nota-item">Dos tríos y un cuarteto — rock emergente<span class="nota-date">29/06/2014 · ANSL</span></div>
+        <div class="nota-item">La fiesta de los 25 años es sobre el escenario<span class="nota-date">11/10/2014 · ANSL</span></div>
+      </div>
+    </div>
+    <div class="notas-cat">
+      <div class="notas-cat-title"><span>📋</span>Educación y Sociedad</div>
+      <div class="notas-list">
+        <div class="nota-item">Alumnos de la 'Polo Godoy Rojo' aprendieron sobre formación audiovisual y guion<span class="nota-date">09/10/2025 · ANSL</span></div>
+        <div class="nota-item">Comenzaron las capacitaciones del Programa de Fortalecimiento Institucional de las ONG<span class="nota-date">26/02/2024 · ANSL</span></div>
+        <div class="nota-item">Poggi: "La política digital es clave para la educación"<span class="nota-date">24/09/2014 · ANSL</span></div>
+        <div class="nota-item">El Gobierno entregará botones antipánico a víctimas de violencia de género<span class="nota-date">16/09/2014 · ANSL</span></div>
+        <div class="nota-item">Se creó el Consejo Provincial de Prevención de Adicciones<span class="nota-date">06/04/2021 · ANSL</span></div>
+        <div class="nota-item">Semana Santa: La Réplica del Cabildo, punto elegido<span class="nota-date">03/04/2021 · ANSL</span></div>
+        <div class="nota-item">Nuevas empresas jóvenes — múltiples coberturas<span class="nota-date">Oct 2014 · ANSL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://agenciasanluis.com/?s=Noelia+Dominguez" target="_blank" class="notas-link reveal">
+    Ver archivo completo en ANSL →
+  </a>
+</section>
+
+<!-- PROYECTOS -->
+
+<section id="proyectos">
+  <div class="section-header reveal">
+    <div class="section-tag">Proyectos propios</div>
+    <h2 class="section-title">OBRA <span class="highlight">PROPIA</span></h2>
+  </div>
+  <div class="proyectos-grid reveal">
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Documental · Premio</div>
+      <div class="proyecto-name">FECO, EL CORAJUDO</div>
+      <p class="proyecto-desc">Largometraje documental. Producción, postproducción y guion. Ganador de la Segunda Convocatoria de Documentales Gerardo Vallejo.</p>
+      <span class="proyecto-badge">🏆 Premio Gerardo Vallejo</span>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Literatura · Publicado 2021</div>
+      <div class="proyecto-name">POESÍA TRÉMULA</div>
+      <p class="proyecto-desc">Poemario de 43 poesías publicado y presentado en el Hito del Bicentenario con muestra de collage y experiencia multimedia.</p>
+      <span class="proyecto-badge">Publicado</span>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Televisión · Canal 13</div>
+      <div class="proyecto-name">LA CAUSA HUMANA</div>
+      <p class="proyecto-desc">Producción del programa televisivo emitido por Canal 13 San Luis. Periodismo de profundidad con enfoque en historias humanas.</p>
+      <span class="proyecto-badge">Canal 13 San Luis</span>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Plataforma Web · Cultural</div>
+      <div class="proyecto-name">ANATOMÍA URBANA</div>
+      <p class="proyecto-desc">Plataforma web cultural de creación propia. Texto, imagen y video para visibilizar artistas locales. 2015–2016.</p>
+      <span class="proyecto-badge">Creadora · Directora</span>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Editorial · En proceso</div>
+      <div class="proyecto-name">PROYECTO DE LIBRO</div>
+      <p class="proyecto-desc">Nuevo proyecto editorial en proceso. Una obra que refleja años de trabajo en comunicación, sociología y producción.</p>
+      <span class="proyecto-badge">En desarrollo</span>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-cat">Periodismo · 2010–2015</div>
+      <div class="proyecto-name">AGENCIA DE NOTICIAS SAN LUIS</div>
+      <p class="proyecto-desc">5 años como periodista en el medio oficial provincial. Más de 30 notas publicadas en cultura, música, educación y sociedad.</p>
+      <span class="proyecto-badge">+30 notas</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<div class="contact-bar" id="contacto">
+  <div class="contact-bar-left">
+    <div class="contact-bar-title">TRABAJEMOS<br>JUNTOS</div>
+    <div class="contact-bar-sub">Presencial y remoto · Argentina</div>
+  </div>
+  <div class="contact-bar-links">
+    <a href="mailto:noelita2080@gmail.com" class="contact-bar-link filled">✉ noelita2080@gmail.com</a>
+    <a href="https://www.linkedin.com/in/noelia-dom%C3%ADnguez-493356363" target="_blank" class="contact-bar-link">LinkedIn</a>
+    <a href="https://noelita2080-png.github.io/noelia-dominguez/" target="_blank" class="contact-bar-link">Portfolio</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">NOÉLIA DOMÍNGUEZ · COMUNICADORA · SOCIÓLOGA · PRODUCTORA</div>
+  <div class="footer-copy">Archivo de trabajo 2006–2025</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+    navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#' + current ? 'var(--gold-bright)' : 'var(--text-dim)'; });
+  });
+</script>
+
+</body>
+</html>
