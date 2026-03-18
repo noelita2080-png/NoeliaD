@@ -199,9 +199,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 <!-- FEATURED: Poesía Trémula -->
 <div class="video-card featured reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/PresentaciA_³n_del_libro_PoesA__a_TrA__mula__en_el_Hito_del_Bicentenario_.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/9CB80rShEEg" frameborder="0" allowfullscreen style="width:100%;height:360px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -221,9 +219,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 <!-- Homenaje Fellini -->
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/Homenaje_a_Federico_Fellini.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/mN92mKRbeO4" frameborder="0" allowfullscreen style="width:100%;height:280px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -242,9 +238,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 <!-- Informe Corto -->
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/INFORME_CORTO.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/3gG265wuAjM" frameborder="0" allowfullscreen style="width:100%;height:280px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -263,9 +257,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 <!-- Audiolibro -->
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/AUDIOLIBRO.mp4" type="video/mp4">
-    </video>
+    <div style="width:100%;height:280px;background:#0d1520;display:flex;align-items:center;justify-content:center;color:rgba(201,169,110,0.4);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.2em;font-size:0.7rem;text-transform:uppercase;">Audiolibro · Contenido con menores</div>
   </div>
   <div class="video-info">
     <div>
@@ -284,9 +276,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 <!-- Educadoras -->
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/Educadoras.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/Pism9f3EUMs" frameborder="0" allowfullscreen style="width:100%;height:280px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -304,9 +294,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/Educadoras_.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/a92JuPnW52Q" frameborder="0" allowfullscreen style="width:100%;height:280px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -324,9 +312,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 
 <div class="video-card reveal">
   <div class="video-player">
-    <video controls preload="metadata">
-      <source src="/mnt/user-data/uploads/Educadoras_2.mp4" type="video/mp4">
-    </video>
+    <iframe src="https://www.youtube.com/embed/IxWp23tzsso" frameborder="0" allowfullscreen style="width:100%;height:280px;display:block;"></iframe>
   </div>
   <div class="video-info">
     <div>
@@ -453,7 +439,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
     <div class="contact-bar-sub">Presencial y remoto · Argentina</div>
   </div>
   <div class="contact-bar-links">
-    <a href="mailto:noelita2080@gmail.com" class="contact-bar-link filled">✉ noelita2080@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#0b65646e67627f6a393b333b4b6c666a626725686466" class="contact-bar-link filled">✉ <span class="__cf_email__" data-cfemail="7b15141e17120f1a494b434b3b1c161a121755181416">[email&#160;protected]</span></a>
     <a href="https://www.linkedin.com/in/noelia-dom%C3%ADnguez-493356363" target="_blank" class="contact-bar-link">LinkedIn</a>
     <a href="https://noelita2080-png.github.io/noelia-dominguez/" target="_blank" class="contact-bar-link">Portfolio</a>
   </div>
@@ -464,26 +450,21 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
   <div class="footer-copy">Archivo de trabajo 2006–2025</div>
 </footer>
 
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
-    navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#' + current ? 'var(--gold-bright)' : 'var(--text-dim)'; });
-  });
-</script>
+const reveals = document.querySelectorAll(’.reveal’);
+const observer = new IntersectionObserver((entries) => {
+entries.forEach((entry, i) => {
+if (entry.isIntersecting) {
+setTimeout(() => entry.target.classList.add(‘visible’), i * 80);
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
 
-</body>
-</html>
+const sections = document.querySelectorAll(‘section[id], div[id]’);
+const navLinks = document.querySelectorAll(’.nav-links a’);
+window.addEventListener(‘scroll’, () => {
+let current = ‘’;
+sections.forEach(s
